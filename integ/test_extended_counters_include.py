@@ -100,12 +100,5 @@ class TestInteg(object):
 
         wait_file(output)
         out = open(output).read()
-        assert "counts.foobar.count|3" not in out
+        assert "counts.foobar.count|600" not in out
         assert "counts.foobar.rate|600" not in out
-        assert "counts.foobar.mean|200" in out
-        assert "counts.foobar.stdev|100" in out
-        assert "counts.foobar.sum|600" in out
-        assert "counts.foobar.sum_sq|140000" in out
-        assert "counts.foobar.lower|100" in out
-        assert "counts.foobar.upper|300" in out
-
