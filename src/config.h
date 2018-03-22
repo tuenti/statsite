@@ -33,7 +33,6 @@ typedef struct included_timer_metrics_config {
 typedef struct included_counter_metrics_config {
     bool count;
     bool rate;
-    bool sample_rate;
 } included_counter_metrics_config;
 
 // Represents the configuration of a histogram

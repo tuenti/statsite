@@ -33,7 +33,7 @@ port = %d
 udp_port = %d
 stream_cmd = %s
 extended_counters = true
-extended_counters_include = MEAN,STDEV,SUM,SUM_SQ,LOWER,UPPER
+extended_counters_include = COUNT,RATE
 
 """ % (port, port, cmd)
     open(config_path, "w").write(conf)

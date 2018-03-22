@@ -53,7 +53,7 @@ static const statsite_config DEFAULT_CONFIG = {
     {"", "kv.", "gauges.", "counts.", "timers.", "sets.", ""},
     {},
     false,              // Extended counters off by default
-    {true, true, true, true, true, true, true, true, false, false},   // All extended counter metrics except sample_rate and median
+    {true, true},       // All extended counter metrics on by default
     {true, true, true, true, true, true, true, true, true, true},   // All timer metrics on by default
     false,              // Do not prefix binary stream by default
                         // Number of quantiles
@@ -195,7 +195,7 @@ included_timer_metrics_config csv_to_included_timer_metrics_config(const char *v
 included_counter_metrics_config csv_to_included_counter_metrics_config(const char *value)
 {
 
-    included_counter_metrics_config included_counter_metrics_cfg = (included_counter_metrics_config){false, false, false};
+    included_counter_metrics_config included_counter_metrics_cfg = (included_counter_metrics_config){false, false};
 
     const char* token;
     size_t token_len;
@@ -208,8 +208,8 @@ included_counter_metrics_config csv_to_included_counter_metrics_config(const cha
     {
         if (strncasecmp(token, "COUNT", token_len) == 0){
             included_counter_metrics_cfg.count = true;
-        } else if (strncasecmp(token, "SAMPLE_RATE", token_len) == 0){
-            included_counter_metrics_cfg.sample_rate = true;
+        } else if (strncasecmp(token, "RATE", token_len) == 0){
+            included_counter_metrics_cfg.rate = true;
         }
         token += token_len;
         token += strspn(token, skip);
